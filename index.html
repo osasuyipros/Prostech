@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROS TECH</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #5325fd, #3898ff);
+      line-height: 1.6;
+      color: white;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 960px; margin: 0 auto; padding: 1rem; }
+
+    /* Outlined text style */
+    .outlined-text {
+      color: black;
+      font-weight: bold;
+      -webkit-text-stroke: 1px white;
+    }
+
+    /* White text */
+    .white-text { color: white; -webkit-text-fill-color: white; background: none; }
+
+    /* Status bar styling */
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+    }
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: white;
+      font-weight: bold;
+    }
+    .icon {
+      font-size: 1.1rem;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    #online-dot.green {
+      background: #00ff00;
+      box-shadow: 0 0 5px #00ff00;
+    }
+    #online-dot.red {
+      background: red;
+      box-shadow: 0 0 5px red;
+    }
+
+    .site-header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.3);
+    }
+    .header-content h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0 0.2rem;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      color: black;
+      font-weight: bold;
+      -webkit-text-stroke: 1px white;
+    }
+    .site-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .site-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.4rem;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .site-nav a span {
+      font-size: 1.1rem;
+    }
+    .site-nav a:hover,
+    .site-nav a.active {
+      background: #00d4ff;
+      color: #0a0a0a;
+    }
+    main section {
+      padding: 4rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+    }
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.8px;
+    }
+    /* Contact icons */
+    .contact-icons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-icons a img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #00d4ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-icons a img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00d4ff;
+    }
+    /* Button style */
+    .join-btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      background: #00d4ff;
+      color: black;
+      font-weight: bold;
+      border-radius: 25px;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+    .join-btn:hover {
+      background: #00a8cc;
+    }
+    @media (max-width: 600px) {
+      .header-content h1 { font-size: 2rem; }
+      .site-nav ul { flex-direction: column; gap: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="status-item">
+      <span class="icon">🔋</span>
+      <span id="battery">--%</span>
+    </div>
+    <div class="status-item">
+      <span class="icon">🕒</span>
+      <span id="time">--:-- --</span>
+    </div>
+    <div class="status-item">
+      <span class="icon">📡</span>
+      <span id="ip">Loading...</span>
+    </div>
+    <div class="status-item">
+      <span id="online-dot" class="dot"></span>
+      <span id="online-text">Offline</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <img src="https://files.catbox.moe/ylp0jx.jpg" alt="PROS TECH Logo" class="logo" />
+      <h1 class="white-text">PROS-TECH</h1>
+      <p class="tagline">Technology That Matters</p>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#home" class="nav-link active white-text"><span>🏠</span> HOME</a></li>
+          <li><a href="#projects" class="nav-link"><span>🔗</span> PROJECTS</a></li>
+          <li><a href="#project" class="nav-link white-text"><span>📂</span> PROJECT</a></li>
+          <li><a href="#contact" class="nav-link white-text"><span>✉️</span> CONTACT</a></li>
+          <li><a href="#bot" class="nav-link white-text"><span>🤖</span> PROS-XD BOT</a></li>
+          <li><a href="#business" class="nav-link white-text"><span>💼</span> BUSINESS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2 class="white-text">Home</h2>
+      <p class="outlined-text">𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝑷𝑹𝑶𝑺 𝑻𝑬𝑪𝑯</p>
+    </section>
+
+    <section id="project">
+      <h2 class="white-text">Project</h2>
+      <p class="outlined-text">🚀 PROS-XD — The next-gen WhatsApp bot by PROSPER (2025)! Packed with speed, brains, and a friendly touch to supercharge your chats and automate your world.</p>
+    </section>
+
+    <section id="contact">
+      <h2 class="white-text">Contact</h2>
+      <p class="outlined-text">Connect with us via GitHub or WhatsApp.</p>
+      <div class="contact-icons">
+        <a href="https://GitHub.com/PROSTECH-xd" target="_blank">
+          <img src="https://files.catbox.moe/fsab7q.jpg" alt="GitHub">
+        </a>
+        <a href="https://wa.me/2349116370966?text=𝑯𝑬𝑳𝑳𝑶%20𝑺𝑰𝑹%20𝑷𝑳𝑬𝑨𝑺𝑬%20𝑯𝑶𝑾%20𝑫𝑶%20𝑰%20𝑮𝑬𝑻%20𝑷𝑹𝑶𝑺%20𝑿𝑫%20𝑩𝑶𝑻" target="_blank">
+          <img src="https://files.catbox.moe/88gauc.jpg" alt="WhatsApp">
+        </a>
+      </div>
+    </section>
+
+    <section id="bot">
+      <h2 class="white-text">PROS-XD BOT</h2>
+      <p class="outlined-text">
+        <img src="https://files.catbox.moe/0mms74.jpg" alt="PROS-XD BOT" style="max-width:150px; display:block; margin-bottom:10px; border-radius:10px;">
+        PROS-XD — Your smart, fast, and friendly WhatsApp assistant. Automate tasks, answer questions, and make chats smoother than ever!
+      </p>
+    </section>
+
+    <section id="business">
+      <h2 class="white-text">Business</h2>
+      <p class="outlined-text">
+        No business update available just click on this button down below to join our WhatsApp group for more updates.
+      </p>
+      <a class="join-btn" href="https://chat.whatsapp.com/K8bLqE3RG1zAl3w4ZkTc2g?mode=ac_t" target="_blank">Join Group</a>
+    </section>
+  </main>
+
+  <script>
+    // Battery Percentage
+    if (navigator.getBattery) {
+      navigator.getBattery().then(function(battery) {
+        function updateBattery() {
+          document.getElementById("battery").textContent =
+            Math.round(battery.level * 100) + "%";
+        }
+        updateBattery();
+        battery.addEventListener("levelchange", updateBattery);
+      });
+    } else {
+      document.getElementById("battery").textContent = "N/A";
+    }
+
+    // Current Time
+    function updateTime() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      document.getElementById("time").textContent = `${hours}:${minutes} ${ampm}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // Public IP Address
+    fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("ip").textContent = data.ip;
+      })
+      .catch(() => {
+        document.getElementById("ip").textContent = "Error";
+      });
+
+    // Online / Offline Status
+    function updateOnlineStatus() {
+      const onlineDot = document.getElementById("online-dot");
+      const onlineText = document.getElementById("online-text");
+      if (navigator.onLine) {
+        onlineDot.className = "dot green";
+        onlineText.textContent = "Alive";
+      } else {
+        onlineDot.className = "dot red";
+        onlineText.textContent = "Offline";
+      }
+    }
+    window.addEventListener("online", updateOnlineStatus);
+    window.addEventListener("offline", updateOnlineStatus);
+    updateOnlineStatus();
+  </script>
+</body>
+      </html>
